@@ -43,3 +43,22 @@ Data-volume available space was 15729852 KiB before assessment and 15626296 KiB 
 3. E2/Limen reclaimer: establish exact-scope process/lease clearance and a scope-contained journaled retirement plan; re-probe live remote identity, custody and payload immediately before applying it. Record absent paths and measured space only after actual retirement.
 
 No implementation gates were claimed: this change adds only this redacted receipt. Validate with git diff --check and effective normal commit/push hooks. No deletion, force push, hook bypass, cloud mutation or installed-runtime mutation occurred.
+
+## Execution follow-up
+
+Four local-history gaps were secret-scanned with gitleaks (exit 0), published through normal Git push/LFS hooks, and read back as exact live custody refs:
+
+| Repository | Remote ref suffix under refs/heads/custody/group02-20260930/ | Full OID |
+|---|---|---|
+| PORTVS | remediate-1 | 766f3c7bb846a19857c33d55eb9307358fdb5aaf |
+| PORTVS | remediate-3 | 95512d1eae587fe50c252531526ac83e52a1ede7 |
+| Domus | fix/cce-managed-refresh-20260925 | 37bf9cbdfc8533efc646f5a9b83275a487f9d634 |
+| Domus | fix/domus-source-root-reconcile-20260925 | aba45318eb2951e04e1284b8fcc1cfa94c2fbf35 |
+
+Domus security-hardening history and its stash passed gitleaks but are not published. The normal branch push exhausted its 60-second deadline without a remote ref. The stash push was stopped by this session after inspecting its required objects: 11024 objects, 332719812 blob bytes, including blob a0bd10933fbf0a859d03a64ebaf6f0524cd1168d at 121773448 bytes. This exceeds the standard 100 MiB GitHub blob limit. No history rewrite, force push or LFS migration was performed. Native stash bf6230941c76a7756798df801e0cfc405d1e202a, its index parent, and security-hardening tip 663b3cc97b0acc1ad1f59d62483c4182e0191611 remain preserved locally. GitHub commit API lookups for both tips returned 404. These require encrypted independent custody, not a blind repeat of the push.
+
+Quarantine fetched missing objects caa2d52f4a52bcc21f72c2b8e4ae8250e364a9d2 and abf9ab66cfc0824af2bf35d84681b9926ad0d56c successfully. Re-scanning advanced to missing object 0b8498c87ce9d644e52bbc5939f6f37f3157fdef (LFS scan exit 2); complete historical LFS enumeration remains unproven. No original ref or checkout was changed.
+
+Independent custody is externally unavailable: only the boot volume is mounted; registered Archive4T and T7Recovery custody targets have no mounted volume and their paired registry reports registered_not_live_verified. The existing HORREVM status --strict exits 77, PARKED on L-CLOUD-EGRESS-CONSENT. Its approved payload list does not admit arbitrary Group 02 repository archives, so this session neither activated the rail nor expanded its egress scope. Original private payload and Git metadata remain retained.
+
+Four publication gaps are resolved. The remaining acceptance requires an existing-owner independent encrypted custody target and restore proof for oversize history, stash, unreachable metadata and payload, plus operational and protected-session release before retirement. No repository removal or complete parity/custody claim is made.
